@@ -5,7 +5,7 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../styles/colors';
 
-export default function Welcome(){
+export default function Welcome({navigation}){
     return(
         <View style={styles.container}>
             <View style={styles.rectangle}/>
@@ -21,7 +21,7 @@ export default function Welcome(){
                     planejamento de{'\n'}
                     suas tarefas!
                 </Text> 
-                <Pressable style={{paddingTop: 35}}>
+                <Pressable style={{paddingTop: 35}} onPress={() => navigation.navigate('SignUp')}>
                     <Icon name="arrow-forward-ios" color={colors.white} size={30}/>
                 </Pressable>
             </View>

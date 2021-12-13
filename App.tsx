@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Welcome from './src/screens/Welcome';
-import MainRoute from './src/routes/Main';
+import InitialRoute from './src/routes/Initial';
 export default function App(){
   return (
-    <MainRoute/>
+    <InitialRoute/>
   );
 }
