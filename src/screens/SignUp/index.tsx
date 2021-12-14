@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -75,7 +77,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={() => {
+            onChangeText={(firstName) => {
               setFirstName(firstName.replace(/\s/g, ''));
               setFirstNameState(isValidName(firstName));
               setSubmitState(
@@ -106,7 +108,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={() => {
+            onChangeText={(lastName) => {
               setLastName(lastName.replace(/\s/g, ''));
               setLastNameState(isValidName(lastName));
               setSubmitState(
@@ -137,7 +139,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={() => {
+            onChangeText={(email) => {
               setEmail(email.replace(/\s/g, '').toLowerCase());
               setEmailState(isValidEmail(email));
               setSubmitState(
@@ -169,7 +171,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={() => {
+            onChangeText={(password) => {
               setPassword(password.replace(/\s/g, ''));
               setPasswordState(isValidPassword(password));
               setSubmitState(

@@ -11,6 +11,7 @@ import styles from './styles';
 
 import colors from '../../styles/colors';
 import Language from '../../../Language';
+
 const isValidEmail = (email: string) => {
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
 
@@ -53,7 +54,7 @@ export default function SignIn({navigation}: {navigation: any}) {
               setEmailState(isValidEmail(email));
               setSubmitState(emailState && passwordState);
             }}
-            onChangeText={() => {
+            onChangeText={(email) => {
               setEmail(email.replace(/\s/g, '').toLowerCase());
               setEmailState(isValidEmail(email));
               setSubmitState(emailState && passwordState);
@@ -81,7 +82,7 @@ export default function SignIn({navigation}: {navigation: any}) {
               setPasswordState(isValidPassword(password));
               setSubmitState(emailState && passwordState);
             }}
-            onChangeText={() => {
+            onChangeText={password => {
               setPassword(password.replace(/\s/g, ''));
               setPasswordState(isValidPassword(password));
               setSubmitState(emailState && passwordState);

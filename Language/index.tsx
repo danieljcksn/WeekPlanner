@@ -26,6 +26,9 @@ export default function Language(){
     'Entrar',
     'Ainda não está registrado?',
     'Criar conta',
+    //Choose Language
+    'Selecionar idioma',
+    'Você ainda poderá alterar o idioma posteriormente.'
   ];
 
   const en = [
@@ -50,7 +53,9 @@ export default function Language(){
     'Sign In',
     "Don't have an account?",
     'Sign up now',
+    'Select language',
+    'You will still be able to change the language later.',
   ];
 
-  return languageOption ? pt : en;
+  return languageOption ? en : pt;
 }
