@@ -1,13 +1,5 @@
-import React, {useContext, useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text} from 'react-native';
 import styles from './styles';
 import {LanguageContext} from '../../contexts/LanguageContext';
 
@@ -32,9 +24,9 @@ const getPercentage = (tasks: Number, done_tasks: Number) => {
 };
 
 //Solução não recomendada
-export default function Home({navigation}: {navigation: any}) {
+// export default function Home({navigation}: {navigation: any}) {
+export default function Home() {
   const {languageOption} = useContext(LanguageContext);
-
   const date = new Date(Date.now());
   const week_days = [
     'Monday',

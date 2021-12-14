@@ -1,16 +1,17 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 
 export const LanguageContext = React.createContext(true);
 
-export default function LanguageContextProvider({children}: {children: any }){
-    const [languageOption, setLanguageOption] = useState(true);
+export default function LanguageContextProvider({children}: {children: any}) {
+  const [languageOption, setLanguageOption] = useState(false);
 
-    return (
-        <LanguageContext.Provider value = {{
-            languageOption,
-            setLanguageOption
-        }}>
-            {children}
-        </LanguageContext.Provider>
-    )
+  return (
+    <LanguageContext.Provider
+      value={{
+        languageOption,
+        setLanguageOption,
+      }}>
+      {children}
+    </LanguageContext.Provider>
+  );
 }

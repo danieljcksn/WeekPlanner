@@ -1,47 +1,56 @@
-import React, { useState } from 'react'
-import { View, Text, Image, Pressable, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Pressable,
+  TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import styles from './styles';
-
 import colors from '../../styles/colors';
 
+import Language from '../../../Language';
 const isValidName = (name: string) => {
   let reg = /^[a-zA-Z]*$/;
 
-  if (reg.test(name) === false)
+  if (reg.test(name) === false) {
     return false;
-  else
+  } else {
     return name.length > 0;
-}
+  }
+};
 
 const isValidEmail = (email: string) => {
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
 
-  return (reg.test(email));
-}
-
+  return reg.test(email);
+};
 
 const isValidPassword = (password: string) => {
   return password.length >= 8;
-}
+};
 
-export default function SignUp({ navigation }: { navigation: any }) {
+export default function SignUp({navigation}: {navigation: any}) {
+  const language = Language();
+
   //First name
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState('');
   const [firstNameState, setFirstNameState] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
   //Last name
-  const [lastName, setLastName] = useState("");
+  const [lastName, setLastName] = useState('');
   const [lastNameState, setLastNameState] = useState(false);
   const [isFocused2, setIsFocused2] = useState(false);
 
   //Email
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [emailState, setEmailState] = useState(false);
   const [isFocused3, setIsFocused3] = useState(false);
 
   //Password
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [passwordState, setPasswordState] = useState(false);
   const [isFocused4, setIsFocused4] = useState(false);
 
@@ -52,14 +61,9 @@ export default function SignUp({ navigation }: { navigation: any }) {
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.title}>
-            <Text style={styles.header}>
-              Lorem ipsum{'\n'}
-              dolor abc quote.
-            </Text>
+            <Text style={styles.header}>{language[2]}</Text>
           </View>
-          <Text style={styles.form_title}>
-            Crie uma conta nova
-          </Text>
+          <Text style={styles.form_title}>{language[3]}</Text>
 
           {/* Primeiro nome */}
           <TextInput
@@ -68,34 +72,29 @@ export default function SignUp({ navigation }: { navigation: any }) {
             onEndEditing={() => {
               setFirstNameState(isValidName(firstName));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={(firstName) => {
-              setFirstName(firstName.replace(/\s/g, ""));
+            onChangeText={() => {
+              setFirstName(firstName.replace(/\s/g, ''));
               setFirstNameState(isValidName(firstName));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-
-            placeholder="Primeiro nome"
+            placeholder={language[4]}
             placeholderTextColor={colors.gray}
-            style={(isFocused) ?
-              styles.input_focus :
-              ((firstNameState) ?
-                styles.input_valid :
-                styles.input_blur)
+            style={
+              isFocused
+                ? styles.input_focus
+                : firstNameState
+                ? styles.input_valid
+                : styles.input_blur
             }
             maxLength={30}
-            autoCapitalize="words"
-          >{firstName}</TextInput>
+            autoCapitalize="words">
+            {firstName}
+          </TextInput>
 
           {/* Último nome */}
           <TextInput
@@ -104,34 +103,29 @@ export default function SignUp({ navigation }: { navigation: any }) {
             onEndEditing={() => {
               setLastNameState(isValidName(lastName));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={(lastName) => {
-              setLastName(lastName.replace(/\s/g, ""));
+            onChangeText={() => {
+              setLastName(lastName.replace(/\s/g, ''));
               setLastNameState(isValidName(lastName));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-
-            placeholder="Último nome"
+            placeholder={language[5]}
             placeholderTextColor={colors.gray}
-            style={(isFocused2) ?
-              styles.input_focus :
-              ((lastNameState) ?
-                styles.input_valid :
-                styles.input_blur)
+            style={
+              isFocused2
+                ? styles.input_focus
+                : lastNameState
+                ? styles.input_valid
+                : styles.input_blur
             }
             maxLength={30}
-            autoCapitalize="words"
-          >{lastName}</TextInput>
+            autoCapitalize="words">
+            {lastName}
+          </TextInput>
 
           {/* Email */}
           <TextInput
@@ -140,36 +134,30 @@ export default function SignUp({ navigation }: { navigation: any }) {
             onEndEditing={() => {
               setEmailState(isValidEmail(email));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-
-            onChangeText={(email) => {
-              setEmail(email.replace(/\s/g, "").toLowerCase());
+            onChangeText={() => {
+              setEmail(email.replace(/\s/g, '').toLowerCase());
               setEmailState(isValidEmail(email));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-
-            placeholder="Email"
+            placeholder={language[6]}
             placeholderTextColor={colors.gray}
-            style={(isFocused3) ?
-              styles.input_focus :
-              ((emailState) ?
-                styles.input_valid :
-                styles.input_blur)
+            style={
+              isFocused3
+                ? styles.input_focus
+                : emailState
+                ? styles.input_valid
+                : styles.input_blur
             }
             maxLength={50}
             autoCapitalize="none"
-            autoComplete="email"
-          >{email}</TextInput>
+            autoComplete="email">
+            {email}
+          </TextInput>
 
           {/* Password */}
           <TextInput
@@ -178,52 +166,45 @@ export default function SignUp({ navigation }: { navigation: any }) {
             onEndEditing={() => {
               setPasswordState(isValidPassword(password));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-
-            onChangeText={(password) => {
-              setPassword(password.replace(/\s/g, ""));
+            onChangeText={() => {
+              setPassword(password.replace(/\s/g, ''));
               setPasswordState(isValidPassword(password));
               setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
+                firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-
-            placeholder="Senha"
+            placeholder={language[7]}
             placeholderTextColor={colors.gray}
-            style={(isFocused4) ?
-              styles.input_focus :
-              ((passwordState) ?
-                styles.input_valid :
-                styles.input_blur)
+            style={
+              isFocused4
+                ? styles.input_focus
+                : passwordState
+                ? styles.input_valid
+                : styles.input_blur
             }
             maxLength={15}
             autoCapitalize="none"
-            secureTextEntry={true}
-          >{password}</TextInput>
+            secureTextEntry={true}>
+            {password}
+          </TextInput>
 
-          <Pressable style={
-            (submit) ?
-              styles.btn :
-              styles.btn_disabled
-          } onPress={() => {
-            if (submit)
-              navigation.navigate('SignIn');
-          }}>
-            <Text style={styles.btn_title}>Começar</Text>
+          <Pressable
+            style={submit ? styles.btn : styles.btn_disabled}
+            onPress={() => {
+              if (submit) {
+                navigation.navigate('SignIn');
+              }
+            }}>
+            <Text style={styles.btn_title}>{language[8]}</Text>
           </Pressable>
 
           <View style={styles.login_btn}>
-            <Text style={styles.question}>Já tem uma conta?</Text>
+            <Text style={styles.question}>{language[9]}</Text>
             <Pressable onPress={() => navigation.navigate('SignIn')}>
-              <Text style={styles.login}>Logar</Text>
+              <Text style={styles.login}>{language[10]}</Text>
             </Pressable>
           </View>
         </View>
