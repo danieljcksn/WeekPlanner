@@ -24,7 +24,8 @@ const isValidPassword = (password: string) => {
   return password.length >= 8;
 }
 
-export default function SignUp({ navigation }: { navigation: any }) {
+//Solução não recomendada
+export default function SignIn({ navigation }: { navigation: any }) {
   //First name
   const [firstName, setFirstName] = useState("");
   const [firstNameState, setFirstNameState] = useState(false);
@@ -58,81 +59,8 @@ export default function SignUp({ navigation }: { navigation: any }) {
             </Text>
           </View>
           <Text style={styles.form_title}>
-            Crie uma conta nova
+            Entrar
           </Text>
-
-          {/* Primeiro nome */}
-          <TextInput
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            onEndEditing={() => {
-              setFirstNameState(isValidName(firstName));
-              setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
-              );
-            }}
-            onChangeText={(firstName) => {
-              setFirstName(firstName.replace(/\s/g, ""));
-              setFirstNameState(isValidName(firstName));
-              setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
-              );
-            }}
-
-            placeholder="Primeiro nome"
-            placeholderTextColor={colors.gray}
-            style={(isFocused) ?
-              styles.input_focus :
-              ((firstNameState) ?
-                styles.input_valid :
-                styles.input_blur)
-            }
-            maxLength={30}
-            autoCapitalize="words"
-          >{firstName}</TextInput>
-
-          {/* Último nome */}
-          <TextInput
-            onFocus={() => setIsFocused2(true)}
-            onBlur={() => setIsFocused2(false)}
-            onEndEditing={() => {
-              setLastNameState(isValidName(lastName));
-              setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
-              );
-            }}
-            onChangeText={(lastName) => {
-              setLastName(lastName.replace(/\s/g, ""));
-              setLastNameState(isValidName(lastName));
-              setSubmitState(
-                firstNameState &&
-                lastNameState &&
-                emailState &&
-                passwordState
-              );
-            }}
-
-            placeholder="Último nome"
-            placeholderTextColor={colors.gray}
-            style={(isFocused2) ?
-              styles.input_focus :
-              ((lastNameState) ?
-                styles.input_valid :
-                styles.input_blur)
-            }
-            maxLength={30}
-            autoCapitalize="words"
-          >{lastName}</TextInput>
-
           {/* Email */}
           <TextInput
             onFocus={() => setIsFocused3(true)}
@@ -209,21 +137,23 @@ export default function SignUp({ navigation }: { navigation: any }) {
             secureTextEntry={true}
           >{password}</TextInput>
 
-          <Pressable style={
-            (submit) ?
-              styles.btn :
-              styles.btn_disabled
-          } onPress={() => {
-            if (submit)
-              navigation.navigate('SignIn');
-          }}>
-            <Text style={styles.btn_title}>Começar</Text>
+          <Pressable
+            style={
+              (submit) ?
+                styles.btn :
+                styles.btn_disabled
+            }
+            onPress={() => {
+              //if(submit)
+              navigation.navigate('SignUp');
+            }}>
+            <Text style={styles.btn_title}>Entrar</Text>
           </Pressable>
 
           <View style={styles.login_btn}>
-            <Text style={styles.question}>Já tem uma conta?</Text>
-            <Pressable onPress={() => navigation.navigate('SignIn')}>
-              <Text style={styles.login}>Logar</Text>
+            <Text style={styles.question}>Ainda não está registrado?</Text>
+            <Pressable onPress={() => navigation.navigate('SignUp')}>
+              <Text style={styles.login}>Criar conta</Text>
             </Pressable>
           </View>
         </View>

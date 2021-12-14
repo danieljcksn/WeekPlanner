@@ -1,9 +1,13 @@
 import React from 'react';
 
-import Welcome from './src/screens/Welcome';
-import InitialRoute from './src/routes/Initial';
+import MainRoute from './src/routes/Main';
+import AuthenticationRoute from './src/routes/AuthenticationRoute';
+
+const isSignedIn = true;
 export default function App(){
   return (
-    <InitialRoute/>
+    isSignedIn ?
+      <MainRoute/>:
+      <AuthenticationRoute/>
   );
 }
