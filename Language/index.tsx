@@ -28,7 +28,11 @@ export default function Language(){
     'Criar conta',
     //Choose Language
     'Selecionar idioma',
-    'Você ainda poderá alterar o idioma posteriormente.'
+    'Você ainda poderá alterar o idioma posteriormente.',
+    //Home
+    'Seu progresso hoje:',
+    'Ainda hoje',
+    'Concluído',
   ];
 
   const en = [
@@ -55,6 +59,10 @@ export default function Language(){
     'Sign up now',
     'Select language',
     'You will still be able to change the language later.',
+    //Home
+    'Your progress today:',
+    'Today',
+    'Done',
   ];
 
   return languageOption ? en : pt;

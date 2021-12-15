@@ -42,8 +42,9 @@ export default function MainRoute() {
             },
             tabBarShowLabel: false,
             tabBarStyle: {
-              backgroundColor: colors.light_gray,
+              backgroundColor: colors.white,
               height: 70,
+              shadowColor: colors.white,
             },
           })}>
           <Tab.Screen name="Settings" component={Settings} />

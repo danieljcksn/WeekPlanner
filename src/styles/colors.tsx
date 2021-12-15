@@ -5,6 +5,7 @@ const colors = {
   white: 'white',
   gray: '#D1D3D4',
   light_gray: '#F7F7FC',
+  ultralight_gray: "#FBFAFF"
 };
 
 export default colors;
