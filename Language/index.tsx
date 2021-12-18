@@ -33,6 +33,12 @@ export default function Language(){
     'Seu progresso hoje:',
     'Ainda hoje',
     'Concluído',
+    //Settings
+    'Suas informações',
+    'Notificações',
+    'Senha',
+    'Idioma',
+    'Modo Escuro',
   ];
 
   const en = [
@@ -63,6 +69,12 @@ export default function Language(){
     'Your progress today:',
     'Today',
     'Done',
+    //Settings
+    'Your info',
+    'Notifications',
+    'Password',
+    'Language',
+    'Dark mode',
   ];
 
   return languageOption ? en : pt;

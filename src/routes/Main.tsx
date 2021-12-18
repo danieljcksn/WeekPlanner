@@ -8,52 +8,48 @@ import Profile from '../screens/Profile';
 import Notifications from '../screens/Notifications';
 import Schedule from '../screens/Schedule';
 import colors from '../styles/colors';
-import LanguageContextProvider from '../contexts/LanguageContext';
 
 const Tab = createBottomTabNavigator();
 
 export default function MainRoute() {
   return (
-    <LanguageContextProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          screenOptions={({route}) => ({
-            headerShown: false,
-            tabBarIcon: ({focused}) => {
-              let iconColor = '',
-                iconName = '';
-              iconColor = focused ? colors.default_blue : colors.gray;
-              if (route.name === 'Home') {
-                iconName = 'home';
-                return <Icon name={iconName} size={35} color={iconColor} />;
-              } else if (route.name === 'Settings') {
-                iconName = 'settings';
-              } else if (route.name === 'Schedule') {
-                iconName = 'calendar';
-              } else if (route.name === 'Notifications') {
-                iconName = 'bell';
-              } else {
-                iconName = 'smile';
-              }
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Home"
+        screenOptions={({route}) => ({
+          headerShown: false,
+          tabBarIcon: ({focused}) => {
+            let iconColor = '',
+              iconName = '';
+            iconColor = focused ? colors.default_blue : colors.black;
+            if (route.name === 'Home') {
+              iconName = 'home';
+            } else if (route.name === 'Settings') {
+              iconName = 'settings';
+            } else if (route.name === 'Schedule') {
+              iconName = 'calendar';
+            } else if (route.name === 'Notifications') {
+              iconName = 'bell';
+            } else {
+              iconName = 'smile';
+            }
 
-              // You can return any component that you like here!
-              return <Icon name={iconName} size={27} color={iconColor} />;
-            },
-            tabBarShowLabel: false,
-            tabBarStyle: {
-              backgroundColor: colors.white,
-              height: 70,
-              shadowColor: colors.white,
-            },
-          })}>
-          <Tab.Screen name="Settings" component={Settings} />
-          <Tab.Screen name="Schedule" component={Schedule} />
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Notifications" component={Notifications} />
-          <Tab.Screen name="Profile" component={Profile} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </LanguageContextProvider>
+            // You can return any component that you like here!
+            return <Icon name={iconName} size={23} color={iconColor} />;
+          },
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            backgroundColor: colors.white,
+            height: 60,
+            shadowColor: colors.white,
+          },
+        })}>
+        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="Schedule" component={Schedule} />
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Notifications" component={Notifications} />
+        <Tab.Screen name="Profile" component={Profile} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
