@@ -7,13 +7,11 @@ import Language from '../../../Language';
 import {LanguageContext} from '../../contexts/LanguageContext';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-//Solução não recomendada
 export default function ChooseLanguage({navigation}: {navigation: any}) {
   const language = Language();
   const {languageOption, setLanguageOption} = useContext(LanguageContext);
   const [option, setOption] = useState(languageOption);
 
-  console.log(languageOption)
   return (
     <View style={styles.container}>
       <View style={styles.content}>

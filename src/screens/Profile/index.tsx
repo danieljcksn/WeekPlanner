@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import styles from './styles';
+import s from './styles';
 
 //Solução não recomendada
 export default function Profile() {
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.title}>
-          <Text style={styles.header}>Profile 👨</Text>
+    <View style={s.container}>
+      <View style={s.content}>
+        <View style={s.title}>
+          <Text style={s.header}>Profile 👨</Text>
         </View>
       </View>
     </View>

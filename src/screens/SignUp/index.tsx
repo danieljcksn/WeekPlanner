@@ -1,5 +1,4 @@
 /* eslint-disable no-shadow */
-/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -9,10 +8,10 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import styles from './styles';
+import s from './styles';
 import colors from '../../styles/colors';
-
 import Language from '../../../Language';
+
 const isValidName = (name: string) => {
   let reg = /^[a-zA-Z]*$/;
 
@@ -60,12 +59,13 @@ export default function SignUp({navigation}: {navigation: any}) {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <View style={styles.title}>
-            <Text style={styles.header}>{language[2]}</Text>
+      <View style={s.container}>
+        <View style={s.content}>
+          {/* Header */}
+          <View style={s.title}>
+            <Text style={s.header}>{language[2]}</Text>
           </View>
-          <Text style={styles.form_title}>{language[3]}</Text>
+          <Text style={s.form_title}>{language[3]}</Text>
 
           {/* Primeiro nome */}
           <TextInput
@@ -77,7 +77,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={(firstName) => {
+            onChangeText={firstName => {
               setFirstName(firstName.replace(/\s/g, ''));
               setFirstNameState(isValidName(firstName));
               setSubmitState(
@@ -88,10 +88,10 @@ export default function SignUp({navigation}: {navigation: any}) {
             placeholderTextColor={colors.gray}
             style={
               isFocused
-                ? styles.input_focus
+                ? s.input_focus
                 : firstNameState
-                ? styles.input_valid
-                : styles.input_blur
+                ? s.input_valid
+                : s.input_blur
             }
             maxLength={30}
             autoCapitalize="words">
@@ -108,7 +108,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={(lastName) => {
+            onChangeText={lastName => {
               setLastName(lastName.replace(/\s/g, ''));
               setLastNameState(isValidName(lastName));
               setSubmitState(
@@ -119,10 +119,10 @@ export default function SignUp({navigation}: {navigation: any}) {
             placeholderTextColor={colors.gray}
             style={
               isFocused2
-                ? styles.input_focus
+                ? s.input_focus
                 : lastNameState
-                ? styles.input_valid
-                : styles.input_blur
+                ? s.input_valid
+                : s.input_blur
             }
             maxLength={30}
             autoCapitalize="words">
@@ -139,7 +139,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={(email) => {
+            onChangeText={email => {
               setEmail(email.replace(/\s/g, '').toLowerCase());
               setEmailState(isValidEmail(email));
               setSubmitState(
@@ -150,10 +150,10 @@ export default function SignUp({navigation}: {navigation: any}) {
             placeholderTextColor={colors.gray}
             style={
               isFocused3
-                ? styles.input_focus
+                ? s.input_focus
                 : emailState
-                ? styles.input_valid
-                : styles.input_blur
+                ? s.input_valid
+                : s.input_blur
             }
             maxLength={50}
             autoCapitalize="none"
@@ -171,7 +171,7 @@ export default function SignUp({navigation}: {navigation: any}) {
                 firstNameState && lastNameState && emailState && passwordState,
               );
             }}
-            onChangeText={(password) => {
+            onChangeText={password => {
               setPassword(password.replace(/\s/g, ''));
               setPasswordState(isValidPassword(password));
               setSubmitState(
@@ -182,10 +182,10 @@ export default function SignUp({navigation}: {navigation: any}) {
             placeholderTextColor={colors.gray}
             style={
               isFocused4
-                ? styles.input_focus
+                ? s.input_focus
                 : passwordState
-                ? styles.input_valid
-                : styles.input_blur
+                ? s.input_valid
+                : s.input_blur
             }
             maxLength={15}
             autoCapitalize="none"
@@ -194,19 +194,19 @@ export default function SignUp({navigation}: {navigation: any}) {
           </TextInput>
 
           <Pressable
-            style={submit ? styles.btn : styles.btn_disabled}
+            style={submit ? s.btn : s.btn_disabled}
             onPress={() => {
               if (submit) {
                 navigation.navigate('SignIn');
               }
             }}>
-            <Text style={styles.btn_title}>{language[8]}</Text>
+            <Text style={s.btn_title}>{language[8]}</Text>
           </Pressable>
 
-          <View style={styles.login_btn}>
-            <Text style={styles.question}>{language[9]}</Text>
+          <View style={s.login_btn}>
+            <Text style={s.question}>{language[9]}</Text>
             <Pressable onPress={() => navigation.navigate('SignIn')}>
-              <Text style={styles.login}>{language[10]}</Text>
+              <Text style={s.login}>{language[10]}</Text>
             </Pressable>
           </View>
         </View>

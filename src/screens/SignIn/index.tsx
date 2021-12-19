@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, {useState} from 'react';
 import {
   View,
@@ -7,7 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import styles from './styles';
+import s from './styles';
 
 import colors from '../../styles/colors';
 import Language from '../../../Language';
@@ -40,12 +41,12 @@ export default function SignIn({navigation}: {navigation: any}) {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <View style={styles.title}>
-            <Text style={styles.header}>{language[11]}</Text>
+      <View style={s.container}>
+        <View style={s.content}>
+          <View style={s.title}>
+            <Text style={s.header}>{language[11]}</Text>
           </View>
-          <Text style={styles.form_title}>{language[12]}</Text>
+          <Text style={s.form_title}>{language[12]}</Text>
           {/* Email */}
           <TextInput
             onFocus={() => setIsFocused3(true)}
@@ -54,7 +55,7 @@ export default function SignIn({navigation}: {navigation: any}) {
               setEmailState(isValidEmail(email));
               setSubmitState(emailState && passwordState);
             }}
-            onChangeText={(email) => {
+            onChangeText={email => {
               setEmail(email.replace(/\s/g, '').toLowerCase());
               setEmailState(isValidEmail(email));
               setSubmitState(emailState && passwordState);
@@ -63,10 +64,10 @@ export default function SignIn({navigation}: {navigation: any}) {
             placeholderTextColor={colors.gray}
             style={
               isFocused3
-                ? styles.input_focus
+                ? s.input_focus
                 : emailState
-                ? styles.input_valid
-                : styles.input_blur
+                ? s.input_valid
+                : s.input_blur
             }
             maxLength={50}
             autoCapitalize="none"
@@ -91,10 +92,10 @@ export default function SignIn({navigation}: {navigation: any}) {
             placeholderTextColor={colors.gray}
             style={
               isFocused4
-                ? styles.input_focus
+                ? s.input_focus
                 : passwordState
-                ? styles.input_valid
-                : styles.input_blur
+                ? s.input_valid
+                : s.input_blur
             }
             maxLength={15}
             autoCapitalize="none"
@@ -103,18 +104,18 @@ export default function SignIn({navigation}: {navigation: any}) {
           </TextInput>
 
           <Pressable
-            style={submit ? styles.btn : styles.btn_disabled}
+            style={submit ? s.btn : s.btn_disabled}
             onPress={() => {
               //if(submit)
               navigation.navigate('SignUp');
             }}>
-            <Text style={styles.btn_title}>{language[15]}</Text>
+            <Text style={s.btn_title}>{language[15]}</Text>
           </Pressable>
 
-          <View style={styles.login_btn}>
-            <Text style={styles.question}>{language[16]}</Text>
+          <View style={s.login_btn}>
+            <Text style={s.question}>{language[16]}</Text>
             <Pressable onPress={() => navigation.navigate('SignUp')}>
-              <Text style={styles.login}>{language[17]}</Text>
+              <Text style={s.login}>{language[17]}</Text>
             </Pressable>
           </View>
         </View>

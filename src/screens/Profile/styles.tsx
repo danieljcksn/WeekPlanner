@@ -1,29 +1,26 @@
-import { StyleSheet } from "react-native";
-import colors from "../../styles/colors";
-import fs from "../../styles/fs";
+import {StyleSheet} from 'react-native';
+import colors from '../../styles/colors';
 
-
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    width: "100%",
-    height: "100%",
-    overflow: "hidden"
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
   },
   header: {
     fontFamily: 'Ubuntu-B',
     fontSize: 29,
     color: colors.black,
-    alignItems: "flex-start"
-    //top: "300%"
+    alignItems: 'flex-start',
   },
   content: {
-    top: "7%",
-    paddingHorizontal: "10%",
+    top: '7%',
+    paddingHorizontal: '10%',
   },
   title: {
-    alignSelf: "flex-start"
+    alignSelf: 'flex-start',
   },
-})
+});
 
-export default styles;
+export default s;

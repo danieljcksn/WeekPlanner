@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, Pressable} from 'react-native';
-import styles from './styles';
+import s from './styles';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../styles/colors';
@@ -10,15 +10,18 @@ export default function Welcome({navigation}: {navigation: any}) {
   const language = Language();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.rectangle} />
-      <View style={styles.content}>
-        <View style={styles.title}>
-          <Text style={styles.header}>{language[0]}</Text>
-          <Text style={styles.header_gr}>WeekPlanner</Text>
+    <View style={s.container}>
+      <View style={s.rectangle} />
+      <View style={s.content}>
+        <View style={s.title}>
+          <Text style={s.header}>{language[0]}</Text>
+          <Text style={s.header_gr}>WeekPlanner</Text>
         </View>
-        <Image style={styles.img} source={require('../../assets/fig1.png')} />
-        <Text style={styles.msg}>{language[1]}</Text>
+
+        <Image style={s.img} source={require('../../assets/fig1.png')} />
+
+        <Text style={s.msg}>{language[1]}</Text>
+
         <Pressable
           style={{paddingTop: 35}}
           onPress={() => navigation.navigate('SignUp')}>

@@ -1,29 +1,10 @@
 import React, {useContext} from 'react';
-import {View, Text, StatusBar, FlatList} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import styles from './styles';
 import {LanguageContext} from '../../contexts/LanguageContext';
 import Language from '../../../Language';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-const getEmoji = (hours: Number) => {
-  if (hours >= 5 && hours < 12) {
-    return '🌤';
-  }
-  if (hours >= 12 && hours <= 15) {
-    return '☀';
-  }
-  if (hours >= 16 && hours < 18) {
-    return '🌇';
-  }
-  if (hours >= 18 && hours <= 23) {
-    return '🌃';
-  }
-  return '🌑';
-};
-
-const getPercentage = (tasks: Number, done_tasks: Number) => {
-  return parseFloat(done_tasks / tasks).toFixed(4) * 100;
-};
+import {getEmoji, getPercentage} from '../../Components/Utils';
 
 export default function Home() {
   const language = Language();
